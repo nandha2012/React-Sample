@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {
     TextField, Grid,
     Typography, Container,
-    Button, FormControlLabel,
-    Checkbox,
+    Button,
     Snackbar,
     Box,
 } from '@material-ui/core';
@@ -25,13 +24,10 @@ function Alert(props: AlertProps) {
 	return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
 
-  interface FilmOptionType {
-    inputValue?: string;
-    title: string;
-    year?: number;
-}
 const Jobcard = (): JSX.Element => {
     const classes = formStyles();
+    const currentDate= new Date();
+    const maxDate = new Date(currentDate.setFullYear(currentDate.getFullYear(),currentDate.getMonth(),currentDate.getDate()+7));
     const [ selectedDate, setSelectedDate ] = useState<Date | null>(new Date());
     const [ errors ,setError ] = useState({
         nameError:false,
@@ -44,7 +40,6 @@ const Jobcard = (): JSX.Element => {
 		failureTost:false
 
     });
-    var jobList: any[] = [];
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setJobDetails((jobDetails) => ({ ...jobDetails, [event.target.id]: event.target.value }))
     }
@@ -67,10 +62,9 @@ const Jobcard = (): JSX.Element => {
 
     useEffect(() =>{
         const jobs = getJobList()
-        jobs.then((result)=>{console.log(result.data);
+        jobs.then((result)=>{
             setJobData(result.data);
         })
-        console.log(jobdata)
     },[])
 
     return (
@@ -136,6 +130,7 @@ const Jobcard = (): JSX.Element => {
                                 margin="normal"
                                 fullWidth
                                 disablePast
+                                maxDate={maxDate}
                                 value={selectedDate}
                                 onChange={setSelectedDate}
                                 KeyboardButtonProps={{

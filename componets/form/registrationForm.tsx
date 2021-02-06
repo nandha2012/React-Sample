@@ -11,9 +11,9 @@ import Compressor from 'compressorjs';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import store from "../../redux/store"
+import { addChange, addError, removeError, addFile, addImage } from '../../redux/actions/action'
 import { formStyles } from '../../styles/registrationFormStyle';
 import React, { useState } from 'react';
-import { addChange, addError, removeError, addFile, addImage } from '../../redux/actions/action'
 import { isValid } from "../../validation/form_validation";
 import { postForm } from '../../services/routers';
 import { POST_STATUS } from '../../utils/const';

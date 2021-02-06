@@ -19,7 +19,6 @@ export const errorReducer = (
         case errorActionTypes.ADD_ERROR:
             return {
                 ...state,
-                
                 [action.payload.field]: true
             }
         case errorActionTypes.REMOVE_ERROR:

@@ -32,8 +32,16 @@ export const getJobList = async() =>{
     try{
         const resp = await axios.post('http://localhost:5000/getJobList');
         if(resp.status === 200){
-            //console.log(resp.data.data[0])
-            resp.data.data.map((value: any) =>{console.log(value.job_type)})
+            return resp.data;
+        }
+    }catch(err){
+        console.error(err);
+    } 
+}
+export const getJobDetails = async() =>{
+    try{
+        const resp = await axios.post('http://localhost:5000/getJobDetails');
+        if(resp.status === 200){
             return resp.data;
         }
     }catch(err){

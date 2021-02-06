@@ -19,6 +19,16 @@ export interface IErrorState {
 		error_checked: boolean;
 		error_validate: boolean;
 }
+export interface ITableValue {
+    User_ID:number;
+    service_Id:string;
+    Job_Date:string;
+    Name:string;
+    Status:string;
+    Payment:string;
+    Job_type:string;
+    Job_Description:string;
+}
 
 type FormAction ={
     type: string;
@@ -41,5 +51,14 @@ type ErrorAction = {
         fieldValue:string;
     }
 }
+type UpdateTableAction = {
+    type:string;
+    payload:any;
+}
+type filterTable = {
+    type:string;
+    FilterKeys:any;
+}
+
 
 type DispatchType = (args: FormAction) => FormAction;
